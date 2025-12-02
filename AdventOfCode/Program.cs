@@ -1,11 +1,30 @@
-﻿Console.WriteLine("Welcome to the Advent of Code 2025!");
+﻿using AdventDayOne;
+
+Console.WriteLine("Welcome to the Advent of Code 2025!");
 Console.Write("Please enter the day you would like to see the solution for (1-12): ");
-Int32.TryParse(Console.ReadLine(), out int selection);
+int.TryParse(Console.ReadLine(), out int selection);
+
+string[] GetInstructions(string filePath)
+{
+    List<string> output = new();
+
+    StreamReader reader = new StreamReader(filePath);
+    string? line = reader.ReadLine();
+    while (line != null)
+    {
+        output.Add(line);
+        line = reader.ReadLine();
+    }
+
+    return output.ToArray();
+}
 
 switch (selection)
 {
     case 1:
-        Console.WriteLine("Day not yet completed");
+        string[] inputs = GetInstructions("../../../data/dayOneCombo.txt");
+        DayOne dayOne = new(inputs, 50, 100);
+        Console.WriteLine($"The password to the safe is {dayOne.FindPassword()}");
         break;
     case 2:
         Console.WriteLine("Day not yet released");

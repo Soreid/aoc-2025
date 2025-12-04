@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventDayTwo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,29 @@ namespace AdventDayTwo
 {
     public class DayTwo(string input)
     {
-        string[] Inputs { get; set; } = input.Split(',');
+        string[] Ranges { get; set; } = input.Split(',');
 
-        public string[]? SplitString(string number)
+        public int AddInvalidIds()
+        {
+            int output = 0;
+
+            foreach(string range in Ranges)
+            {
+                SectionModel section = new(range);
+
+                foreach(string value in section.GetValues())
+                {
+                    if(HalvesMatch(value))
+                    {
+                        output += int.Parse(value);
+                    }
+                }
+            }
+
+            return output;
+        }
+
+        internal string[]? SplitString(string number)
         {
             if(number.Length % 2 == 1)
             {
@@ -22,7 +43,7 @@ namespace AdventDayTwo
             return [number.Substring(0, half), number.Substring(half)];
         }
 
-        public bool HalvesMatch(string number)
+        internal bool HalvesMatch(string number)
         {
             string[]? parts = SplitString(number);
 

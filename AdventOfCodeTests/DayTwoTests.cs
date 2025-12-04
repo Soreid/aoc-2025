@@ -34,5 +34,17 @@ namespace AdventOfCodeTests
 
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [InlineData("23-25", 0)]
+        [InlineData("32-34", 33)]
+        [InlineData("41-44,44-62", 143)]
+        public void InvalidIdsAddCorrectly(string input, int expected)
+        {
+            DayTwo dayTwo = new(input);
+            int result = dayTwo.AddInvalidIds();
+
+            Assert.Equal(result, expected);
+        }
     }
 }

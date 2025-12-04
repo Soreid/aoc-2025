@@ -12,7 +12,6 @@ namespace AdventDayOne
     {
         private DialModel Dial;
         private InstructionModel[] Instructions;
-        private int Password = 0;
 
         public DayOne(string[] instructions, int dial_start, int dial_length)
         {
@@ -26,22 +25,13 @@ namespace AdventDayOne
             Dial = new DialModel(dial_start, dial_length);
         }
 
-        private void SpinDial(InstructionModel instruction)
-        {
-            Dial.Spin(instruction.TurnDistance);
-            if(Dial.CurrentNumber == 0)
-            {
-                Password++;
-            }
-        }
-
         public int FindPassword()
         {
             foreach(InstructionModel instruction in Instructions)
             {
-                SpinDial(instruction);
+                Dial.Spin(instruction.TurnDistance);
             }
-            return Password;
+            return Dial.ZeroClicks;
         }
     }
 }

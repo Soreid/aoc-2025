@@ -13,11 +13,11 @@ namespace AdventDayTwo.Models
         public int Start { get; private set; } = int.Parse(range.Split('-')[0]);
         public int End { get; private set; } = int.Parse(range.Split('-')[1]);
 
-        public IEnumerable<int> GetValues()
+        public IEnumerable<string> GetValues()
         {
             for (int i = Start; i <= End; i++)
             {
-                yield return i;
+                yield return i.ToString();
             }
         }
     }

@@ -10,12 +10,12 @@ namespace AdventDayTwo.Models
 {
     internal class SectionModel(string range)
     {
-        public int Start { get; private set; } = int.Parse(range.Split('-')[0]);
-        public int End { get; private set; } = int.Parse(range.Split('-')[1]);
+        public long Start { get; private set; } = Int64.Parse(range.Split('-')[0]);
+        public long End { get; private set; } = Int64.Parse(range.Split('-')[1]);
 
         public IEnumerable<string> GetValues()
         {
-            for (int i = Start; i <= End; i++)
+            for (long i = Start; i <= End; i++)
             {
                 yield return i.ToString();
             }

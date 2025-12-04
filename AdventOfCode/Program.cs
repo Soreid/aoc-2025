@@ -1,4 +1,5 @@
 ﻿using AdventDayOne;
+using AdventDayTwo;
 
 Console.WriteLine("Welcome to the Advent of Code 2025!");
 Console.Write("Please enter the day you would like to see the solution for (1-12): ");
@@ -27,7 +28,9 @@ switch (selection)
         Console.WriteLine($"The password to the safe is {dayOne.FindPassword()}");
         break;
     case 2:
-        Console.WriteLine("Day not yet released");
+        inputs = GetInstructions("../../../data/dayTwoInput.txt");
+        DayTwo dayTwo = new(inputs[0]);
+        Console.WriteLine($"The total of the invalid Ids are {dayTwo.AddInvalidIds()}");
         break;
     case 3:
         Console.WriteLine("Day not yet released");

@@ -11,9 +11,9 @@ namespace AdventDayTwo
     {
         string[] Ranges { get; set; } = input.Split(',');
 
-        public int AddInvalidIds()
+        public long AddInvalidIds()
         {
-            int output = 0;
+            long output = 0;
 
             foreach(string range in Ranges)
             {
@@ -23,7 +23,7 @@ namespace AdventDayTwo
                 {
                     if(HalvesMatch(value))
                     {
-                        output += int.Parse(value);
+                        output += Int64.Parse(value);
                     }
                 }
             }

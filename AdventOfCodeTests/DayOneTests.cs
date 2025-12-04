@@ -101,7 +101,7 @@ namespace AdventOfCodeTests
         }
 
         [Theory]
-        [InlineData(new string[] { "L68, L30, R48, L5, R60, L55, L1, L99, R14, L82" }, 6)]
+        [InlineData(new string[] { "L68", "L30", "R48", "L5", "R60", "L55", "L1", "L99", "R14", "L82" }, 6)]
         public void CorrectResultFromSequence(string[] instructions, int target)
         {
             DialModel dial = new(50, 100);

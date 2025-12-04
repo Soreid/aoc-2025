@@ -33,9 +33,16 @@ namespace AdventDayOne.Models
                 CurrentNumber -= MaxNumber;
                 ZeroClicks++;
             }
-            if (CurrentNumber < 0 && start != 0)
+            if (CurrentNumber < 0)
             {
                 CurrentNumber += MaxNumber;
+                if(start != 0)
+                {
+                    ZeroClicks++;
+                }
+            }
+            if (start < 0 && CurrentNumber > 0)
+            {
                 ZeroClicks++;
             }
 

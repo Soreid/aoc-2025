@@ -21,38 +21,66 @@ namespace AdventDayTwo
 
                 foreach(string value in section.GetValues())
                 {
-                    if(HalvesMatch(value))
+                    List<string[]> sets = new();
+
+                    for (int i = 1; i <= value.Length; i++)
                     {
-                        output += Int64.Parse(value);
+                        if (SplitString(value, i) != null)
+                        {
+                            sets.Add(SplitString(value, i));
+                        }
                     }
+
+                    foreach (string[] set in sets)
+                    {
+                        if (PartsAreEqual(set))
+                        {
+                            output += Int64.Parse(value);
+                            break;
+                        }
+                    }
+
                 }
             }
 
             return output;
         }
 
-        internal string[]? SplitString(string number)
+        internal string[]? SplitString(string number, int parts)
         {
-            if(number.Length % 2 == 1)
+            if(number.Length % parts != 0)
             {
                 return null;
             }
 
-            int half = number.Length / 2;
+            string[] output = new string[parts];
+            int length = number.Length / parts;
 
-            return [number.Substring(0, half), number.Substring(half)];
+            for (int i = 0; i < parts; i++)
+            {
+                output[i] = number.Substring(i * length, length);
+            }
+
+            return output;
         }
 
-        internal bool HalvesMatch(string number)
+        internal bool PartsAreEqual(string[] group)
         {
-            string[]? parts = SplitString(number);
-
-            if (parts == null)
+            if (group.Length == 1)
             {
                 return false;
             }
 
-            return parts[0] == parts[1];
+            string match = group[0];
+            foreach (string x in group)
+            {
+                if (x != match)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

@@ -11,26 +11,26 @@ namespace AdventOfCodeTests
     public class DayTwoTests
     {
         [Theory]
-        [InlineData("11", new string[] { "1", "1" })]
-        [InlineData("29275383", new string[] { "2927", "5383" })]
-        [InlineData("83753", null)]
-        public void SeparatesNumberCorrectly(string input, string[]? expected)
+        [InlineData("11", 2, new string[] { "1", "1" })]
+        [InlineData("29275383", 2, new string[] { "2927", "5383" })]
+        [InlineData("83753", 2, null)]
+        public void SeparatesNumberCorrectly(string input, int parts, string[]? expected)
         {
             DayTwo dayTwo = new(input);
-            string[]? result = dayTwo.SplitString(input);
+            string[]? result = dayTwo.SplitString(input, parts);
 
             Assert.Equal(expected, result);
         }
 
         [Theory]
-        [InlineData("6776", false)]
-        [InlineData("38250", false)]
-        [InlineData("124124", true)]
-        [InlineData("98539853", true)]
-        public void HalvesMatchCorrectly(string input, bool expected)
+        [InlineData(new string[] { "4", "4", "4", "4" }, true)]
+        [InlineData(new string[] { "4", "4", "5", "4" }, false)]
+        [InlineData(new string[] { "25034" }, false)]
+        [InlineData(new string[] { "234", "235", "236" }, false)]
+        public void PartsMatchCorrectly(string[] input, bool expected)
         {
-            DayTwo dayTwo = new(input);
-            bool result = dayTwo.HalvesMatch(input);
+            DayTwo dayTwo = new("");
+            bool result = dayTwo.PartsAreEqual(input);
 
             Assert.Equal(expected, result);
         }
@@ -42,7 +42,7 @@ namespace AdventOfCodeTests
         public void InvalidIdsAddCorrectly(string input, int expected)
         {
             DayTwo dayTwo = new(input);
-            int result = dayTwo.AddInvalidIds();
+            long result = dayTwo.AddInvalidIds();
 
             Assert.Equal(result, expected);
         }

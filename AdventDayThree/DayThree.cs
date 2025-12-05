@@ -10,14 +10,14 @@ namespace AdventDayThree
     {
         string[] Inputs = input;
 
-        public int GetTotalJoltage()
+        public long GetTotalJoltage(int battery_count)
         {
-            int total = 0;
+            long total = 0;
 
             foreach (string input in Inputs)
             {
-                string joltage = FindLargestSet(input, 0, 1);
-                total += int.Parse(joltage);
+                string joltage = FindLargestSet(input, 0, battery_count - 1);
+                total += Int64.Parse(joltage);
             }
 
             return total;

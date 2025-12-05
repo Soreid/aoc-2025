@@ -36,7 +36,7 @@ switch (selection)
     case 3:
         inputs = GetInstructions("../../../data/dayThreeBatteries.txt");
         DayThree dayThree = new(inputs);
-        Console.WriteLine($"The total joltage is { dayThree.GetTotalJoltage() }");
+        Console.WriteLine($"The total joltage is { dayThree.GetTotalJoltage(12) }");
         break;
     case 4:
         Console.WriteLine("Day not yet released");

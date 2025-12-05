@@ -10,9 +10,9 @@ namespace AdventOfCodeTests
     public class DayThreeTests
     {
         [Theory]
-        [InlineData("9876111", 2, "98")]
-        [InlineData("1211419", 2, "49")]
-        [InlineData("3852639618", 3, "968")]
+        [InlineData("9876111", 1, "98")]
+        [InlineData("1211419", 1, "49")]
+        [InlineData("3852639618", 2, "968")]
         public void GetsCorrectArrangement(string input, int buffer, string expected)
         {
             DayThree dayThree = new(new [] { "" });

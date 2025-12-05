@@ -1,5 +1,6 @@
 ﻿using AdventDayOne;
 using AdventDayTwo;
+using AdventDayThree;
 
 Console.WriteLine("Welcome to the Advent of Code 2025!");
 Console.Write("Please enter the day you would like to see the solution for (1-12): ");
@@ -33,7 +34,9 @@ switch (selection)
         Console.WriteLine($"The total of the invalid Ids are {dayTwo.AddInvalidIds()}");
         break;
     case 3:
-        Console.WriteLine("Day not yet released");
+        inputs = GetInstructions("../../../data/dayThreeBatteries.txt");
+        DayThree dayThree = new(inputs);
+        Console.WriteLine($"The total joltage is { dayThree.GetTotalJoltage() }");
         break;
     case 4:
         Console.WriteLine("Day not yet released");

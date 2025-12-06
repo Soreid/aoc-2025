@@ -41,7 +41,7 @@ namespace AdventOfCodeTests
             new object[] { DataGrid, new int[] { 0, 0 }, 1, new char[] { '@', '.', '@' } },
             new object[] { DataGrid, new int[] { 2, 1 }, 1, new char[] { '@', '@', '@', '@', '@', '@', '@', '@' } },
             new object[] { DataGrid, new int[] { 6, 6 }, 1, new char[] { '.', '@', '.' } },
-            new object[] { DataGrid, new int[] { 5, 5 }, 2, new char[] { '.', '@', '.', '.', '.', '.', '.', '.', '@', '.', '.', '@', '.', '.', '.', '.' } }
+            new object[] { DataGrid, new int[] { 5, 5 }, 2, new char[] { '.', '@', '.', '.', '.', '.', '.', '.', '@', '.', '@', '.', '.', '.', '.' } }
         };
 
         [Theory]
@@ -67,7 +67,7 @@ namespace AdventOfCodeTests
         };
 
         [Theory]
-        [MemberData(nameof(NeighborData))]
+        [MemberData(nameof(AccessibleData))]
         public void GetsCorrectAccessibleCount(string[] data, int[] pos, char[] blockers, int threshold, int radius, bool expected)
         {
             DayFour dayFour = new(data);

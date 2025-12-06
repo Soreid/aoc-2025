@@ -15,10 +15,5 @@ namespace AdventDayFour
         {
             throw new NotImplementedException();
         }
-
-        public int GetAccessibleCount(char[] blockers, int threshold, int radius)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

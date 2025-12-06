@@ -29,7 +29,20 @@ namespace AdventDayFour
 
         public int GetAccessibleCount(char[] blockers, int threshold, int radius)
         {
-            throw new NotImplementedException();
+            int accessiblePoints = 0;
+
+            for (int i = 0; i < Grid.Points.GetLength(0); i++)
+            {
+                for (int j = 0; j < Grid.Points.GetLength(1); j++)
+                {
+                    if (Grid.Points[i, j] == '@' && IsAccessible([i, j], blockers, threshold, radius))
+                    {
+                        accessiblePoints++;
+                    }
+                }
+            }
+
+            return accessiblePoints;
         }
     }
 }

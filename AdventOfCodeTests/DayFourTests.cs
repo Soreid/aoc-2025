@@ -39,7 +39,7 @@ namespace AdventOfCodeTests
         public static IEnumerable<object[]> NeighborData => new List<object[]>
         {
             new object[] { DataGrid, new int[] { 0, 0 }, 1, new char[] { '@', '.', '@' } },
-            new object[] { DataGrid, new int[] { 2, 1 }, 1, new char[] { '@', '@', '@', '@', '@', '@', '@', '@' } },
+            new object[] { DataGrid, new int[] { 1, 2 }, 1, new char[] { '@', '@', '@', '@', '@', '@', '@', '@' } },
             new object[] { DataGrid, new int[] { 6, 6 }, 1, new char[] { '.', '@', '.' } },
             new object[] { DataGrid, new int[] { 5, 5 }, 2, new char[] { '.', '@', '.', '.', '.', '.', '.', '.', '@', '.', '@', '.', '.', '.', '.' } }
         };
@@ -57,13 +57,13 @@ namespace AdventOfCodeTests
         public static IEnumerable<object[]> AccessibleData => new List<object[]>
         {
             new object[] { DataGrid, new int[] { 0, 0 }, new char[] { '@' }, 4, 1, true },
-            new object[] { DataGrid, new int[] { 2, 1 }, new char[] { '@' }, 4, 1, false },
             new object[] { DataGrid, new int[] { 1, 2 }, new char[] { '@' }, 4, 1, false },
-            new object[] { DataGrid, new int[] { 1, 2 }, new char[] { '@' }, 5, 1, true },
-            new object[] { DataGrid, new int[] { 2, 5 }, new char[] { '@' }, 4, 1, false },
-            new object[] { DataGrid, new int[] { 2, 5 }, new char[] { '@' }, 5, 1, true },
-            new object[] { DataGrid, new int[] { 2, 5 }, new char[] { '@' }, 5, 2, false },
-            new object[] { DataGrid, new int[] { 0, 6 }, new char[] { '@' }, 4, 2, false }
+            new object[] { DataGrid, new int[] { 2, 1 }, new char[] { '@' }, 4, 1, false },
+            new object[] { DataGrid, new int[] { 2, 1 }, new char[] { '@' }, 5, 1, true },
+            new object[] { DataGrid, new int[] { 5, 2 }, new char[] { '@' }, 4, 1, false },
+            new object[] { DataGrid, new int[] { 5, 2 }, new char[] { '@' }, 5, 1, true },
+            new object[] { DataGrid, new int[] { 5, 2 }, new char[] { '@' }, 5, 2, false },
+            new object[] { DataGrid, new int[] { 6, 0 }, new char[] { '@' }, 4, 2, false }
         };
 
         [Theory]

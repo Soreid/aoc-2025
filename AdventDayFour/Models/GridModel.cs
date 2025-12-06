@@ -41,7 +41,7 @@ namespace AdventDayFour.Models
                     {
                         if (i != x || j != y)
                         {
-                            neighbors.Add(Points[j, i]);
+                            neighbors.Add(Points[i, j]);
                         }
                     }
                 }

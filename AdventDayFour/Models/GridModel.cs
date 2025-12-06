@@ -49,5 +49,10 @@ namespace AdventDayFour.Models
 
             return neighbors.ToArray();
         }
+
+        public void Remove(int[] pos)
+        {
+            Points[pos[0], pos[1]] = '.';
+        }
     }
 }

@@ -42,7 +42,7 @@ switch (selection)
     case 4:
         inputs = GetInstructions("../../../data/dayFourGrid.txt");
         DayFour dayFour = new(inputs);
-        Console.WriteLine($"The number of accessible rolls is {dayFour.GetAccessibleCount(['@'], 4, 1) }");
+        Console.WriteLine($"The number of accessible rolls is {dayFour.GetTotalPossibleRemovals(['@'], 4, 1) }");
         break;
     case 5:
         Console.WriteLine("Day not yet released");

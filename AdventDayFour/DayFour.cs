@@ -27,7 +27,7 @@ namespace AdventDayFour
             return blockCount < threshold;
         }
 
-        public int GetAccessibleCount(char[] blockers, int threshold, int radius)
+        public int GetAccessibleCount(char[] blockers, int threshold, int radius, bool remove=false)
         {
             int accessiblePoints = 0;
 
@@ -38,11 +38,29 @@ namespace AdventDayFour
                     if (Grid.Points[i, j] == '@' && IsAccessible([i, j], blockers, threshold, radius))
                     {
                         accessiblePoints++;
+                        if (remove)
+                        {
+                            Grid.Remove([i, j]);
+                        }
                     }
                 }
             }
 
             return accessiblePoints;
+        }
+
+        public int GetTotalPossibleRemovals(char[] blockers, int threshold, int radius)
+        {
+            int removals = 0;
+            int lastRemovals = 0;
+
+            do
+            {
+                lastRemovals = GetAccessibleCount(blockers, threshold, radius, true);
+                removals += lastRemovals;
+            } while (lastRemovals != 0);
+
+            return removals;
         }
     }
 }

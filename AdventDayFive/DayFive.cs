@@ -8,8 +8,8 @@ namespace AdventDayFive
 {
     public class DayFive
     {
-        internal List<int[]> Ranges { get; private set; } = new();
-        internal List<int> Ids { get; private set; } = new();
+        internal List<long[]> Ranges { get; private set; } = new();
+        internal List<long> Ids { get; private set; } = new();
 
         public DayFive(string[] input)
         {
@@ -27,27 +27,27 @@ namespace AdventDayFive
                 }
                 else
                 {
-                    Ids.Add(int.Parse(i));
+                    Ids.Add(long.Parse(i));
                 }
             }
         }
 
-        internal int[] GetRange(string range)
+        internal long[] GetRange(string range)
         {
-            int[] output = new int[2];
+            long[] output = new long[2];
 
             string[] numbers = range.Split('-');
             for (int i = 0; i < numbers.Length; i++)
             {
-                output[i] = int.Parse(numbers[i]);
+                output[i] = Int64.Parse(numbers[i]);
             }
 
             return output;
         }
 
-        internal bool IsWithinRange(int target, List<int[]> ranges)
+        internal bool IsWithinRange(long target, List<long[]> ranges)
         {
-            foreach (int[] range in ranges)
+            foreach (long[] range in ranges)
             {
                 if (range[0] <= target && range[1] >= target)
                 {
@@ -58,19 +58,24 @@ namespace AdventDayFive
             return false;
         }
 
-        public int GetExpiredCount()
+        public int GetFreshCount()
         {
-            int expiredCount = 0;
+            int freshCount = 0;
 
-            foreach (int id in Ids)
+            foreach (long id in Ids)
             {
                 if (IsWithinRange(id, Ranges))
                 {
-                    expiredCount++;
+                    freshCount++;
                 }
             }
 
-            return expiredCount;
+            return freshCount;
+        }
+
+        public int GetExpiredCount()
+        {
+            return Ids.Count - GetFreshCount();
         }
     }
 }

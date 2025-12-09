@@ -2,6 +2,7 @@
 using AdventDayTwo;
 using AdventDayThree;
 using AdventDayFour;
+using AdventDayFive;
 
 Console.WriteLine("Welcome to the Advent of Code 2025!");
 Console.Write("Please enter the day you would like to see the solution for (1-12): ");
@@ -45,7 +46,9 @@ switch (selection)
         Console.WriteLine($"The number of accessible rolls is {dayFour.GetTotalPossibleRemovals(['@'], 4, 1) }");
         break;
     case 5:
-        Console.WriteLine("Day not yet released");
+        inputs = GetInstructions("../../../data/dayFiveIds.txt");
+        DayFive dayFive = new(inputs);
+        Console.WriteLine($"The number of expired ingredients is {dayFive.GetExpiredCount()}");
         break;
     case 6:
         Console.WriteLine("Day not yet released");

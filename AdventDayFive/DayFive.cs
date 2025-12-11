@@ -77,5 +77,22 @@ namespace AdventDayFive
         {
             return Ids.Count - GetFreshCount();
         }
+
+        public int GetTotalIdCount()
+        {
+            int total = 0;
+
+            for (int i = 0; i < Ranges.Count; i++)
+            {
+                total += GetIdsInRange(Ranges[i]);
+            }
+
+            return total;
+        }
+
+        public int GetIdsInRange(long[] range)
+        {
+            return (int)(range[1] - range[0] + 1);
+        }        
     }
 }

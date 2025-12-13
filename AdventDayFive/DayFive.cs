@@ -78,13 +78,19 @@ namespace AdventDayFive
             return Ids.Count - GetFreshCount();
         }
 
-        public int GetTotalIdCount()
+        public int GetTotalIdCount(List<long[]> ranges)
         {
             int total = 0;
+            long current = 0;
 
-            for (int i = 0; i < Ranges.Count; i++)
+            for (int i = 0; i < ranges.Count; i++)
             {
-                total += GetIdsInRange(Ranges[i]);
+                if (ranges[i][1] > current)
+                {
+                    AdjustRangeMinimum(i, ranges[i], ranges);
+                    total += GetIdsInRange(ranges[i]);
+                    current = ranges[i][1];
+                }
             }
 
             return total;
@@ -94,5 +100,21 @@ namespace AdventDayFive
         {
             return (int)(range[1] - range[0] + 1);
         }        
+
+        public void AdjustRangeMinimum(int start, long[] range, List<long[]> ranges)
+        {
+            for (int i = start + 1; i < ranges.Count; i++)
+            {
+                if (ranges[i][0] <= range[1])
+                {
+                    if (ranges[i][1] > range[1])
+                    {
+                        ranges[i][0] = range[1] + 1;
+                    }
+                }
+            }
+        }
+
+        
     }
 }

@@ -48,7 +48,7 @@ switch (selection)
     case 5:
         inputs = GetInstructions("../../../data/dayFiveIds.txt");
         DayFive dayFive = new(inputs);
-        Console.WriteLine($"The number of fresh ingredients is {dayFive.GetFreshCount()}");
+        Console.WriteLine($"The number of fresh ingredients is {dayFive.GetTotalFreshCount()}");
         break;
     case 6:
         Console.WriteLine("Day not yet released");

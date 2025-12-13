@@ -73,15 +73,22 @@ namespace AdventDayFive
             return freshCount;
         }
 
+        public long GetTotalFreshCount()
+        {
+            return GetTotalIdCount(Ranges);
+        }
+
         public int GetExpiredCount()
         {
             return Ids.Count - GetFreshCount();
         }
 
-        public int GetTotalIdCount(List<long[]> ranges)
+        internal long GetTotalIdCount(List<long[]> ranges)
         {
-            int total = 0;
+            long total = 0;
             long current = 0;
+
+            ranges = ranges.OrderBy(x => x[0]).ToList();
 
             for (int i = 0; i < ranges.Count; i++)
             {
@@ -96,12 +103,12 @@ namespace AdventDayFive
             return total;
         }
 
-        public int GetIdsInRange(long[] range)
+        internal long GetIdsInRange(long[] range)
         {
-            return (int)(range[1] - range[0] + 1);
+            return range[1] - range[0] + 1;
         }        
 
-        public void AdjustRangeMinimum(int start, long[] range, List<long[]> ranges)
+        internal void AdjustRangeMinimum(int start, long[] range, List<long[]> ranges)
         {
             for (int i = start + 1; i < ranges.Count; i++)
             {

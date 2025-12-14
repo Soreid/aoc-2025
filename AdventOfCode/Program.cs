@@ -3,6 +3,7 @@ using AdventDayTwo;
 using AdventDayThree;
 using AdventDayFour;
 using AdventDayFive;
+using AdventDaySix;
 
 Console.WriteLine("Welcome to the Advent of Code 2025!");
 Console.Write("Please enter the day you would like to see the solution for (1-12): ");
@@ -51,7 +52,9 @@ switch (selection)
         Console.WriteLine($"The number of fresh ingredients is {dayFive.GetTotalFreshCount()}");
         break;
     case 6:
-        Console.WriteLine("Day not yet released");
+        inputs = GetInstructions("../../../data/daySixProblems.txt");
+        DaySix daySix = new(inputs);
+        Console.WriteLine($"The total value of the homework problems is {daySix.SolveHomework()}");
         break;
     case 7:
         Console.WriteLine("Day not yet released");

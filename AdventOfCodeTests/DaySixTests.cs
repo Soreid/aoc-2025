@@ -47,7 +47,7 @@ namespace AdventOfCodeTests
         {
             DaySix daySix = new(inputs);
 
-            Assert.Equal(expected, daySix.Problems[0].Calc());
+            Assert.Equal(expected, daySix.Problems[problem].Calc());
         }
     }
 }

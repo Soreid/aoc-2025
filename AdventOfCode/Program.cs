@@ -4,6 +4,7 @@ using AdventDayThree;
 using AdventDayFour;
 using AdventDayFive;
 using AdventDaySix;
+using AdventDaySeven;
 
 Console.WriteLine("Welcome to the Advent of Code 2025!");
 Console.Write("Please enter the day you would like to see the solution for (1-12): ");
@@ -57,7 +58,9 @@ switch (selection)
         Console.WriteLine($"The total value of the homework problems is {daySix.SolveHomework()}");
         break;
     case 7:
-        Console.WriteLine("Day not yet released");
+        inputs = GetInstructions("../../../data/daySevenDiagram.txt");
+        DaySeven daySeven = new(inputs);
+        Console.WriteLine($"The total number of beam splits is {daySeven.Splits}");
         break;
     case 8:
         Console.WriteLine("Day not yet released");

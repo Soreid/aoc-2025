@@ -10,7 +10,7 @@ namespace AdventDaySix.Models
     internal class ProblemModel
     {
         public List<int> Numbers { get; private set; } = new();
-        public char Operator { get; private set; }
+        public char Operator { get; set; }
         public long Calc()
         {
             long output = Numbers[0];

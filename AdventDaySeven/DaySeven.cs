@@ -6,10 +6,20 @@ using System.Threading.Tasks;
 
 namespace AdventDaySeven
 {
-    public class DaySeven(string[] inputs)
+    public class DaySeven
     {
-        public string[] Inputs { get; set; } = inputs;
+        internal string[] Inputs { get; private set; }
+        public string[] Outputs { get; private set; }
+        public int Splits { get; private set; }
 
+        public DaySeven(string[] inputs)
+        {
+            throw new NotImplementedException();
+        }
 
+        internal void Fire(string[] inputs)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -45,11 +45,11 @@ namespace AdventOfCodeTests
         [InlineData(new long[] { 10, 20 }, 11)]
         [InlineData(new long[] { 44, 44 }, 1)]
         [InlineData(new long[] { 1, 1001 }, 1001 )]
-        public void SingleRangeCountIsCorrect(long[] range, int expected)
+        public void SingleRangeCountIsCorrect(long[] range, long expected)
         {
             DayFive dayFive = new([""]);
 
-            int actual = dayFive.GetIdsInRange(range);
+            long actual = dayFive.GetIdsInRange(range);
 
             Assert.Equal(expected, actual);
         }
@@ -63,11 +63,11 @@ namespace AdventOfCodeTests
 
         [Theory]
         [MemberData(nameof(MultipleRangeCountData))]
-        public void MultipleRangeCountIsCorrect(List<long[]> ranges, int expected)
+        public void MultipleRangeCountIsCorrect(List<long[]> ranges, long expected)
         {
             DayFive dayFive = new([""]);
 
-            int actual = dayFive.GetTotalIdCount(ranges);
+            long actual = dayFive.GetTotalIdCount(ranges);
 
             Assert.Equal(expected, actual);
         }
@@ -81,11 +81,11 @@ namespace AdventOfCodeTests
 
         [Theory]
         [MemberData(nameof(OverlapRangeCountData))]
-        public void OverlapRangeCountIsCorrect(List<long[]> ranges, int expected)
+        public void OverlapRangeCountIsCorrect(List<long[]> ranges, long expected)
         {
             DayFive dayFive = new([""]);
 
-            int actual = dayFive.GetTotalIdCount(ranges);
+            long actual = dayFive.GetTotalIdCount(ranges);
 
             Assert.Equal(expected, actual);
         }

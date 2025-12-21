@@ -56,5 +56,12 @@ namespace AdventOfCodeTests
             DaySeven daySeven = new(puzzleStart);
             Assert.Equal(puzzleEnd, daySeven.Outputs);
         }
+
+        [Fact]
+        public void CorrectPossiblePaths()
+        {
+            DaySeven daySeven = new(puzzleStart);
+            Assert.Equal(22, daySeven.PossibleSplits);
+        }
     }
 }

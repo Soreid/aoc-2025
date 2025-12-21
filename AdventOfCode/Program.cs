@@ -60,7 +60,7 @@ switch (selection)
     case 7:
         inputs = GetInstructions("../../../data/daySevenDiagram.txt");
         DaySeven daySeven = new(inputs);
-        Console.WriteLine($"The total number of beam splits is {daySeven.Splits}");
+        Console.WriteLine($"The total number of timeline beam splits is {daySeven.PossibleSplits}");
         break;
     case 8:
         Console.WriteLine("Day not yet released");

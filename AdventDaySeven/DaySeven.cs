@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,10 +12,12 @@ namespace AdventDaySeven
     {
         public string[] Outputs { get; private set; }
         public int Splits { get; private set; }
+        public long PossibleSplits { get; private set; }
 
         public DaySeven(string[] inputs)
         {
             Outputs = Fire(inputs);
+            PossibleSplits = FindPossiblePaths(inputs);
         }
 
         internal string[] Fire(string[] inputs)
@@ -51,6 +55,49 @@ namespace AdventDaySeven
             }
 
             return outputs;
+        }
+    
+        internal long FindPossiblePaths(string[] inputs)
+        {
+            Dictionary<int, long> paths = new()
+            {
+                { inputs[0].IndexOf('S'), 1 }
+            };
+            for (int i = 1; i < inputs.Length; i++)
+            {
+                paths = FindNextPaths(inputs[i], paths);
+            }
+            return paths.Values.Sum();
+        }
+
+        internal Dictionary<int, long> FindNextPaths(string line, Dictionary<int, long> previous)
+        {
+            int[] indexes = previous.Keys.ToArray();
+            foreach (int i in indexes)
+            {
+                if (line[i] == '^')
+                {
+                    if (previous.ContainsKey(i - 1))
+                    {
+                        previous[i - 1] += previous[i];
+                    }
+                    else
+                    {
+                        previous.Add(i - 1, previous[i]);
+                    }
+                    if (previous.ContainsKey(i + 1))
+                    {
+                        previous[i + 1] += previous[i];
+                    }
+                    else
+                    {
+                        previous.Add(i + 1, previous[i]);
+                    }
+                    previous.Remove(i);
+                }
+            }
+
+            return previous;
         }
     }
 }

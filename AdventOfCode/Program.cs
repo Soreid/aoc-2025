@@ -6,6 +6,7 @@ using AdventDayFive;
 using AdventDaySix;
 using AdventDaySeven;
 using AdventDayEight;
+using AdventDayNine;
 
 Console.WriteLine("Welcome to the Advent of Code 2025!");
 Console.Write("Please enter the day you would like to see the solution for (1-12): ");
@@ -69,7 +70,9 @@ switch (selection)
         Console.WriteLine($"The length of the extension cord needed is {dayEight.ConnectNearestJunctions()}");
         break;
     case 9:
-        Console.WriteLine("Day not yet released");
+        inputs = GetInstructions("../../../data/dayNineTiles.txt");
+        DayNine dayNine = new(inputs);
+        Console.WriteLine($"The largest area that can be made is {dayNine.GetLargestArea()}");
         break;
     case 10:
         Console.WriteLine("Day not yet released");

@@ -38,6 +38,11 @@ namespace AdventDayNine
             return max;
         }
 
+        public long GetFittedArea()
+        {
+            throw new NotImplementedException();
+        }
+
         internal long GetRectArea(int[] corner1, int[] corner2)
         {
             long x = Math.Abs(corner1[0] - corner2[0]) + 1;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdventDayFive;
 using AdventDayNine;
 
 namespace AdventOfCodeTests
@@ -39,6 +40,25 @@ namespace AdventOfCodeTests
             DayNine dayNine = new([]);
 
             long actual = dayNine.GetRectArea(corner1, corner2);
+
+            Assert.Equal(expected, actual);
+        }
+
+        public static IEnumerable<object[]> CoordSets => new List<object[]>
+            {
+                new object[] { new string[] { "1,1", "3,1", "3,3", "1,3" }, 9 },
+                new object[] { new string[] { "3,1", "6,1", "6,5", "1,5", "1,3", "3,3" }, 20 },
+                new object[] { new string[] { "1,1", "2,1", "2,2", "4,2", "4,1", "6,1", "6,3", "1,3" }, 10 },
+                new object[] { new string[] { "1,1", "1,4", "2,4", "2,7", "4,7", "4,5", "7,5", "7,1", "6,1", "6,3", "3,3", "3,1" }, 14 }
+            };
+
+        [Theory]
+        [MemberData(nameof(CoordSets))]
+        public void CalculatesAreaFittedToBorder(string[] inputs, long expected)
+        {
+            DayNine dayNine = new(inputs);
+
+            long actual = dayNine.GetFittedArea();
 
             Assert.Equal(expected, actual);
         }

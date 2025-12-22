@@ -10,7 +10,8 @@ namespace AdventDayEight
     public class DayEight
     {
         internal JunctionModel[] Junctions { get; private set; }
-        internal Dictionary<int, int> CircuitSizes { get; private set; }
+        internal Dictionary<int[], double> Distances { get; private set; } = new();
+        internal Dictionary<int, int> CircuitSizes { get; private set; } = new();
 
         public DayEight(string[] inputs)
         {
@@ -19,12 +20,45 @@ namespace AdventDayEight
             {
                 Junctions[i] = CreateJunction(inputs[i]);
                 Junctions[i].Circuit = i;
+                for (int j = 0; j < i; j++)
+                {
+                    Distances.Add([i, j], CalculateDistance(Junctions[i], Junctions[j]));
+                }
             }
         }
 
-        public long ConnectJunctions(int connections)
+        public void ConnectNearestJunctions(int connections)
         {
-            throw new NotImplementedException();
+            int current = 0;
+            Dictionary<int[], double> nearestBoxes = Distances.OrderBy(x => x.Value).ToDictionary<int[], double>();
+            foreach (KeyValuePair<int[], double> boxPair in nearestBoxes)
+            {
+                if (current == connections)
+                {
+                    break;
+                }
+                ConnectJunctions(Junctions[boxPair.Key[0]], Junctions[boxPair.Key[1]]);
+                current++;
+            }
+        }
+
+        public long GetProductOfCircuits(int circuits)
+        {
+            long output = 0;
+            Dictionary<int, int> largestCircuits = CircuitSizes.OrderByDescending(x => x.Value).ToDictionary<int, int>();
+            int[] prodCircuits = largestCircuits.Values.Take(circuits).ToArray();
+            for (int i = 0; i < prodCircuits.Length; i++)
+            {
+                if (output == 0)
+                {
+                    output = prodCircuits[i];
+                }
+                else
+                {
+                    output *= prodCircuits[i];
+                }
+            }
+            return output;
         }
 
         internal JunctionModel CreateJunction(string coordinates)
@@ -47,7 +81,7 @@ namespace AdventDayEight
             {
                 addition.Circuit = c;
             }
-            if (CircuitSizes.ContainsValue(c))
+            if (CircuitSizes.ContainsKey(c))
             {
                 CircuitSizes[c] += additions.Length;
             }

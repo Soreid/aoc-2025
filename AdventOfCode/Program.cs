@@ -5,6 +5,7 @@ using AdventDayFour;
 using AdventDayFive;
 using AdventDaySix;
 using AdventDaySeven;
+using AdventDayEight;
 
 Console.WriteLine("Welcome to the Advent of Code 2025!");
 Console.Write("Please enter the day you would like to see the solution for (1-12): ");
@@ -63,7 +64,10 @@ switch (selection)
         Console.WriteLine($"The total number of timeline beam splits is {daySeven.PossibleSplits}");
         break;
     case 8:
-        Console.WriteLine("Day not yet released");
+        inputs = GetInstructions("../../../data/dayEightBoxes.txt");
+        DayEight dayEight = new(inputs);
+        dayEight.ConnectNearestJunctions(1000);
+        Console.WriteLine($"The product of the three largest circuits are {dayEight.GetProductOfCircuits(3)}");
         break;
     case 9:
         Console.WriteLine("Day not yet released");

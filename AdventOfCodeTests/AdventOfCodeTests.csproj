@@ -26,6 +26,7 @@
     <ProjectReference Include="..\AdventDayEight\AdventDayEight.csproj" />
     <ProjectReference Include="..\AdventDayFive\AdventDayFive.csproj" />
     <ProjectReference Include="..\AdventDayFour\AdventDayFour.csproj" />
+    <ProjectReference Include="..\AdventDayNine\AdventDayNine.csproj" />
     <ProjectReference Include="..\AdventDayOne\AdventDayOne.csproj" />
     <ProjectReference Include="..\AdventDaySeven\AdventDaySeven.csproj" />
     <ProjectReference Include="..\AdventDaySix\AdventDaySix.csproj" />

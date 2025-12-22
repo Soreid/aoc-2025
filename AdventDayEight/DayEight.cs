@@ -20,11 +20,29 @@ namespace AdventDayEight
             {
                 Junctions[i] = CreateJunction(inputs[i]);
                 Junctions[i].Circuit = i;
+                CircuitSizes.Add(i, 1);
                 for (int j = 0; j < i; j++)
                 {
                     Distances.Add([i, j], CalculateDistance(Junctions[i], Junctions[j]));
                 }
             }
+        }
+
+        public long ConnectNearestJunctions()
+        {
+            Dictionary<int[], double> nearestBoxes = Distances.OrderBy(x => x.Value).ToDictionary<int[], double>();
+            int[] lastPair = new int[2];
+            foreach (KeyValuePair<int[], double> boxPair in nearestBoxes)
+            {
+                ConnectJunctions(Junctions[boxPair.Key[0]], Junctions[boxPair.Key[1]]);
+                lastPair = boxPair.Key;
+                if (CircuitSizes.Count == 1)
+                {
+                    break;
+                }
+            }
+
+            return Junctions[lastPair[0]].X * Junctions[lastPair[1]].X;
         }
 
         public void ConnectNearestJunctions(int connections)

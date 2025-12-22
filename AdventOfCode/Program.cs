@@ -66,8 +66,7 @@ switch (selection)
     case 8:
         inputs = GetInstructions("../../../data/dayEightBoxes.txt");
         DayEight dayEight = new(inputs);
-        dayEight.ConnectNearestJunctions(1000);
-        Console.WriteLine($"The product of the three largest circuits are {dayEight.GetProductOfCircuits(3)}");
+        Console.WriteLine($"The length of the extension cord needed is {dayEight.ConnectNearestJunctions()}");
         break;
     case 9:
         Console.WriteLine("Day not yet released");

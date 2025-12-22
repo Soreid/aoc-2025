@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdventDayEight\AdventDayEight.csproj" />
     <ProjectReference Include="..\AdventDayFive\AdventDayFive.csproj" />
     <ProjectReference Include="..\AdventDayFour\AdventDayFour.csproj" />
     <ProjectReference Include="..\AdventDayOne\AdventDayOne.csproj" />
